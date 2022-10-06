@@ -14,3 +14,12 @@ it('Button tests click',()=>{
     fireEvent.click(ClickIndicator)
     expect(mockOnClick).toHaveBeenCalled()
 })
+
+
+it('Button tests disabled',()=>{
+  const mockOnClick = jest.fn()
+  const {getByTestId} = render(<Button colorTheme="primary" roundedFull={true} transparent={true} disabled={true} click={mockOnClick} children={'submit'} />)
+  const ClickIndicator = getByTestId('ClickIndicator')
+  fireEvent.click(ClickIndicator)
+  expect(mockOnClick).not.toHaveBeenCalled();
+})
