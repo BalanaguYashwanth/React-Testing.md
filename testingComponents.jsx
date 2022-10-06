@@ -23,3 +23,11 @@ it('Button tests disabled',()=>{
   fireEvent.click(ClickIndicator)
   expect(mockOnClick).not.toHaveBeenCalled();
 })
+
+it('Button Testing',()=>{
+  const mockTrigger = jest.fn()
+  render(<Button colorTheme="primary" roundedFull={true} transparent={true} disabled={false} click={mockTrigger} > submit  </Button>)
+  const button = screen.getByRole('button',{name:/submit/i})
+  fireEvent.click(button)
+  expect(mockTrigger).toHaveBeenCalled()
+})
